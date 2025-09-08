@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marlon Marishta - Full Stack Developer & Cybersecurity Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: #00d4ff;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Header */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .header-content {
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .glitch-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+            animation: glow 2s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff; }
+            to { text-shadow: 0 0 20px #00d4ff, 0 0 30px #00d4ff, 0 0 40px #00d4ff; }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #888;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #ccc;
+            animation: fadeInUp 1s ease-out 0.7s both;
+            text-align: left;
+        }
+
+        .highlight {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .contact-info a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 5px #00d4ff;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            color: #00d4ff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 14px;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #00d4ff;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 100px 0;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent, #00d4ff, transparent);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00d4ff;
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: #ccc;
+            text-align: left;
+        }
+
+        .skill-list li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, #00d4ff, #0088cc);
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin: 20px 0;
+            margin-left: 50px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.03);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: #00d4ff;
+            border-radius: 50%;
+            top: 30px;
+            left: -57px;
+            margin-left: -7px;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        .timeline-content h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .company {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content .contact {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+
+        .project-title {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        /* Education Section */
+        .education-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .education-title {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .education-institution {
+            color: #888;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .education-details {
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .coursework {
+            margin-top: 20px;
+        }
+
+        .coursework h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .coursework-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .coursework-list li {
+            color: #ccc;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .coursework-list li::before {
+            content: '📚';
+            position: absolute;
+            left: 0;
+        }
+
+        /* Matrix Rain Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00d4ff, #0088cc);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Languages & Interests */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .info-card h3 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+            color: #ccc;
+        }
+
+        .info-list li {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch-text {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                position: relative;
+                top: auto;
+                right: auto;
+                text-align: center;
+                margin: 20px 0;
+                justify-content: center;
+            }
+            
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+                margin-left: -7px;
+            }
+
+            .description {
+                text-align: center;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-bg" id="matrix"></canvas>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn active" onclick="showSection('home')">Home</button>
+        <button class="nav-btn" onclick="showSection('about')">About</button>
+        <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+        <button class="nav-btn" onclick="showSection('experience')">Experience</button>
+        <button class="nav-btn" onclick="showSection('projects')">Projects</button>
+        <button class="nav-btn" onclick="showSection('education')">Education</button>
+        <button class="nav-btn" onclick="showSection('contact')">Contact</button>
+    </div>
+
+    <!-- Home Section -->
+    <div id="home" class="section active">
+        <div class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="glitch-text">Marlon Marishta</h1>
+                    <p class="subtitle">Full Stack Developer • Cybersecurity Expert • Network Engineer</p>
+                    
+                    <div class="description">
+                        <p>🎓 <span class="highlight">Recent Computing Graduate</span> from Technological University of Dublin with a 3.8/4 GPA specializing in Digital Forensics and Cyber Security.</p>
+                        
+                        <p>💼 <span class="highlight">Professional Experience</span> at Europe's largest asset manager (Amundi), where I developed secure APIs, built compliance dashboards, and delivered enterprise-level technology solutions.</p>
+                        
+                        <p>🚀 <span class="highlight">Diverse Background</span> - From professional football player to cybersecurity analyst, bringing unique perspectives on teamwork, performance under pressure, and systematic problem-solving.</p>
+                        
+                        <p>🔧 <span class="highlight">Technical Expertise</span> spanning full-stack development (JavaScript/TypeScript, React, Node.js), cybersecurity (penetration testing, SIEM, vulnerability assessment), and network engineering (firewalls, VPNs, security architecture).</p>
+                        
+                    </div>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:marishta.marlon@gmail.com">📧 marishta.marlon@gmail.com</a>
+                        <a href="tel:+19172468180">📞 917-246-8180</a>
+                        <span>📍 New York City, NY</span>
+                    </div>
+                    <div>
+                        <a href="#" class="download-btn" onclick="downloadResume()">📄 Download Resume</a>
+                        <a href="https://github.com/iam-h1m" class="download-btn" target="_blank">💻 GitHub Portfolio</a>
+                        <a href="#" class="download-btn" onclick="showSection('contact')">💬 Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>🌍 Background</h3>
+                    <div style="text-align: left; color: #ccc; line-height: 1.8;">
+                        <p>Originally from Chicago, I moved to Ireland with my family at age 14—a transition that taught me resilience and adaptability. My parents, who immigrated to America in search of opportunity, instilled in me a strong work ethic and determination.</p>
+                        
+                        <p>At 18, I entered professional football, playing for top-tier clubs including Bohemian F.C., Bray Wanderers, and Lokomotiva Zagreb. This experience taught me invaluable lessons about teamwork, performing under pressure, and maintaining focus in high-stakes environments.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🎯 Career Focus</h3>
+                    <div style="text-align: left; color: #ccc; line-height: 1.8;">
+                        <p>Transitioning from sports to technology, I'm passionate about building secure, scalable solutions that solve real-world problems. My combination of discipline, technical skills, and life experiences can help aid development and cybersecurity challenges.</p>
+                        
+                        <p>I'm particularly interested in roles that combine my technical skills with meaningful impact—whether that's building financial compliance tools, securing critical infrastructure, or developing innovative applications.</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🌐 Languages</h3>
+                    <ul class="info-list">
+                        <li><strong>English:</strong> Native Proficiency</li>
+                        <li><strong>Albanian:</strong> Native Proficiency</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🛂 Citizenship</h3>
+                    <ul class="info-list">
+                        <li><strong>United States:</strong> Dual Citizen</li>
+                        <li><strong>Ireland:</strong> Dual Citizen</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🎮 Interests</h3>
+                    <ul class="info-list">
+                        <li>⚽ Sports & Fitness</li>
+                        <li>🎮 Gaming & Technology</li>
+                        <li>📚 History & Learning</li>
+                        <li>🏌️ Golf</li>
+                        <li>🧩 Puzzles</li>
+                        <li>🐾 Animals</li>
+                        <li>🚴 Cycling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-title">Full Stack Development</h3>
+                    <ul class="skill-list">
+                        <li><strong>Frontend:</strong> JavaScript/TypeScript, React, Vue.js, Angular, HTML5/CSS3, Tailwind CSS</li>
+                        <li><strong>Backend:</strong> Node.js, Python (FastAPI, Django), Java (Spring Boot), C++, C, C#, PHP</li>
+                        <li><strong>Databases:</strong> PostgreSQL, MongoDB, Redis, MySQL, SQLite</li>
+                        <li><strong>APIs:</strong> RESTful Services, GraphQL, Microservices, gRPC, Kong Gateway</li>
+                        <li><strong>Build Tools:</strong> Maven, Gradle, Webpack, Vite, NPM/Yarn</li>
+                        <li><strong>DevOps/Cloud:</strong> Docker, Kubernetes, AWS (EC2, S3, Lambda), CI/CD, Jenkins</li>
+                        <li><strong>Testing:</strong> Jest, PHPUnit, Selenium, Cypress, JUnit, Pytest, Postman, K6</li>
+                        <li><strong>Version Control:</strong> Git, GitHub Actions, GitLab CI</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🔒</div>
+                    <h3 class="skill-title">Cybersecurity</h3>
+                    <ul class="skill-list">
+                        <li><strong>Penetration Testing:</strong> PTES, OWASP Top 10, NIST Framework, MITRE ATT&CK</li>
+                        <li><strong>Vulnerability Management:</strong> Nessus, OpenVAS, Qualys, CVE Analysis, CVSS Scoring</li>
+                        <li><strong>Security Tools:</strong> Metasploit, Burp Suite, Nmap, Wireshark, Sqlmap, Kali Linux</li>
+                        <li><strong>SIEM/SOC:</strong> Splunk, ELK Stack, IBM QRadar, Log Analysis, Threat Hunting</li>
+                        <li><strong>Cloud Security:</strong> AWS Security, Azure Security Center, IAM, Zero Trust</li>
+                        <li><strong>Compliance:</strong> ISO 27001, SOC 2, PCI DSS, GDPR, HIPAA</li>
+                        <li><strong>Digital Forensics:</strong> EnCase, FTK, Autopsy, Volatility, SANS DFIR</li>
+                        <li><strong>Incident Response:</strong> DFIR, Malware Analysis, Threat Intelligence</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3 class="skill-title">Network Engineering & Security</h3>
+                    <ul class="skill-list">
+                        <li><strong>Network Security:</strong> Next-Gen Firewalls (Palo Alto, Fortinet), IDS/IPS, WAF</li>
+                        <li><strong>Network Protocols:</strong> TCP/IP, BGP, OSPF, VLANs, VPNs (IPSec, SSL/TLS)</li>
+                        <li><strong>Security Architecture:</strong> Zero Trust, Network Segmentation, DMZ Design</li>
+                        <li><strong>Monitoring Tools:</strong> SolarWinds, PRTG, Nagios, Zabbix, Network Performance</li>
+                        <li><strong>Cloud Networking:</strong> AWS VPC, Azure vNET, SD-WAN, Cloud Security Groups</li>
+                        <li><strong>Network Analysis:</strong> Wireshark, TCPdump, Network Forensics, Traffic Analysis</li>
+                        <li><strong>Identity Management:</strong> Active Directory, LDAP, SAML, OAuth2, MFA</li>
+                        <li><strong>Automation:</strong> Python Scripting, Ansible, Terraform, Network Automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Software Developer</h3>
+                        <div class="company">Amundi (Europe's Largest Asset Manager) | January 2025 - June 2025</div>
+                        <p>Designed and built full-stack features for data-heavy compliance and regulatory dashboard applications. Constructed and secured RESTful APIs ensuring reliable data exchange and system integration. Implemented interactive UI components and data visualizations for regulatory reporting systems. Configured automated monitoring systems and alert mechanisms for real-time anomaly detection.</p>
+                        <div class="contact">Contact: Kevin Brassil - kevin.brassil@amundi.com</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>IT Support</h3>
+                        <div class="company">Amundi | May 2023 - October 2023</div>
+                        <p>Delivered desktop and network support across multiple departments, addressing IT issues promptly to minimize downtime and maintain operational efficiency. Supported financial data processing systems and user account management. Maintained detailed documentation and incident tracking for continuous improvement.</p>
+                        <div class="contact">Contact: Graham Kenny - graham.kenny@amundi.com</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Professional Football Player</h3>
+                        <div class="company">Bohemian F.C. → Bray Wanderers → Lokomotiva Zagreb | June 2018 - July 2021</div>
+                        <p>Professional athlete competing at the highest levels in Irish and Croatian football leagues. Achieved Europa League qualification with Bohemian F.C. in 2018. Developed exceptional teamwork, leadership, and performance under pressure skills that translate directly to high-stakes technical environments.</p>
+                        <div class="contact">Contact: Eamonn Mahon - +353 87 258 4930</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Construction Worker (Part-time)</h3>
+                        <div class="company">EMBS | August 2021 - June 2025</div>
+                        <p>Balanced physical construction work with academic studies. Gained practical problem-solving experience and hands-on technical skills in a demanding physical environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 class="project-title">🔍 CyberVault - CVE Scanner</h3>
+                    <p class="project-description">
+                        User-friendly vulnerability scanner designed for non-technical users. Automatically scans Windows systems for installed software, identifies CVEs using the National Vulnerability Database, and generates comprehensive PDF reports with clear remediation guidance. Features offline database support and cybersecurity news integration.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyQt5</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Windows Registry</span>
+                        <span class="tech-tag">CVE Database</span>
+                        <span class="tech-tag">PDF Generation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iam-h1m/CyberVault" class="project-link" target="_blank">View Code</a>
+                        <a href="#" class="project-link" onclick="alert('Desktop application - download from GitHub releases')">Download</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🛒 Nostalgic Dreams - Retro Gaming E-commerce</h3>
+                    <p class="project-description">
+                        Full-featured PHP e-commerce platform specializing in vintage gaming items. Includes user authentication, shopping cart, payment processing, loyalty points system, seasonal discounts, and comprehensive admin panel. Features extensive PHPUnit testing coverage.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PHPUnit</span>
+                        <span class="tech-tag">E-commerce</span>
+                        <span class="tech-tag">Payment Processing</span>
+                        <span class="tech-tag">User Management</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iam-h1m/Nostalgic_Dreams" class="project-link" target="_blank">View Code</a>
+                        <a href="#" class="project-link" onclick="alert('PHP application - setup instructions in README')">Setup Guide</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🎮 Planet Deltron - Unity 3D Endless Runner</h3>
+                    <p class="project-description">
+                        Dynamic 3D endless runner game built with Unity featuring procedurally generated paths, progressive difficulty scaling, smooth camera systems, and full character animations. Players navigate an alien planet while avoiding obstacles and collecting points in this infinite runner experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity 3D</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">ShaderLab</span>
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">Procedural Generation</span>
+                        <span class="tech-tag">3D Animation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iam-h1m/PlanetDeltron" class="project-link" target="_blank">View Code</a>
+                        <a href="https://akosbujdi.github.io/PlanetDeltron/" class="project-link" target="_blank">Play Game</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🔐 CryptoHack - Cryptography Challenges</h3>
+                    <p class="project-description">
+                        Collection of cryptography challenges and solutions demonstrating various encryption techniques, cipher breaking methods, and security analysis. Includes implementations of classical and modern cryptographic algorithms with educational documentation.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Security Analysis</span>
+                        <span class="tech-tag">Algorithm Implementation</span>
+                        <span class="tech-tag">Educational</span>
+                        <span class="tech-tag">CTF</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iam-h1m/CryptoHack" class="project-link" target="_blank">View Code</a>
+                        <a href="#" class="project-link" onclick="alert('Educational cryptography challenges and solutions')">Solutions</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🎮 NightHaven - Safety App</h3>
+                    <p class="project-description">
+                        React Native mobile application for nightlife safety featuring interactive maps, venue safety ratings, real-time crowd monitoring, and emergency reporting. Demonstrates full-stack mobile development with geolocation services and secure user authentication.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Maps Integration</span>
+                        <span class="tech-tag">Mobile Development</span>
+                        <span class="tech-tag">Geolocation</span>
+                        <span class="tech-tag">Safety Systems</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" onclick="alert('Mobile app prototype - demo available')">View Demo</a>
+                        <a href="#" class="project-link" onclick="alert('Contact for source code access')">Contact</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">🌐 Interactive Portfolio Website</h3>
+                    <p class="project-description">
+                        This cyberpunk-themed interactive resume website featuring animated backgrounds, matrix rain effects, and responsive design. Built with vanilla JavaScript, CSS animations, and modern web technologies to showcase frontend development skills and professional experience.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">Canvas API</span>
+                        <span class="tech-tag">Responsive Design</span>
+                        <span class="tech-tag">Animations</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/iam-h1m" class="project-link" target="_blank">GitHub Profile</a>
+                        <a href="#" class="project-link" onclick="alert('You are currently viewing the live demo!')">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/iam-h1m" class="download-btn" target="_blank">🔗 View All Projects on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education & Learning</h2>
+            
+            <div class="education-card">
+                <h3 class="education-title">Bachelor of Science in Computing - Digital Forensics and Cyber Security</h3>
+                <div class="education-institution">Technological University of Dublin</div>
+                <div class="education-details">
+                    <strong>Duration:</strong> September 2022 - June 2025 | <strong>GPA:</strong> 3.8/4.0
+                </div>
+                <p style="color: #ccc; margin: 20px 0; line-height: 1.6;">
+                    Comprehensive program combining theoretical knowledge with extensive hands-on experience in cybersecurity, digital forensics, and software development. Completed team-based projects across gaming, web applications, and system-level development using multiple programming languages and frameworks.
+                </p>
+                
+                <div class="coursework">
+                    <h4>Core Coursework:</h4>
+                    <ul class="coursework-list">
+                        <li>Advanced Programming & Software Engineering</li>
+                        <li>Database Fundamentals & Design</li>
+                        <li>Network Security Architecture</li>
+                        <li>Digital Forensics & Investigation</li>
+                        <li>Penetration Testing & Ethical Hacking</li>
+                        <li>Computer & Network Forensics</li>
+                        <li>SIEM Technologies & Log Analysis</li>
+                        <li>Cryptography & Secure Programming</li>
+                        <li>Vulnerability Assessment & Management</li>
+                        <li>Mathematics for Computing</li>
+                        <li>Algorithms & Data Structures</li>
+                        <li>Web Development & UI/UX Design</li>
+                    </ul>
+                </div>
+
+                <div class="coursework" style="margin-top: 30px;">
+                    <h4>Laboratory Experience:</h4>
+                    <ul class="coursework-list">
+                        <li>FTK Analysis & Digital Evidence Processing</li>
+                        <li>Autopsy Digital Forensics Platform</li>
+                        <li>Network Scanning & Enumeration Labs</li>
+                        <li>Vulnerability Scanning & Research</li>
+                        <li>Metasploit Exploitation Framework</li>
+                        <li>Password Cracking & Security Testing</li>
+                        <li>Web Penetration Testing with Burp Suite</li>
+                        <li>Wireless Network Security Assessment</li>
+                        <li>Memory & Network Forensics</li>
+                        <li>Windows & FAT File System Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="coursework" style="margin-top: 30px;">
+                    <h4>Assessment Methods:</h4>
+                    <div style="color: #ccc; margin-top: 10px;">
+                        <p><strong>Practical Labs/Presentations:</strong> 20% | <strong>Multiple Choice Exams:</strong> 40% | <strong>Research Papers & Presentations:</strong> 40%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-grid" style="margin-top: 50px;">
+                <div class="info-card">
+                    <h3>🏆 Key Achievements</h3>
+                    <ul class="info-list" style="text-align: left;">
+                        <li>3.8/4.0 GPA</li>
+                        <li>Thesis project: CVE Scanner Desktop Application</li>
+                        <li>Team leadership in group software projects</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>📚 Relevant Reading</h3>
+                    <ul class="info-list" style="text-align: left;">
+                        <li>"Computer Forensics Principles and Practices"</li>
+                        <li>"Forensic Discovery" by Dan Farmer</li>
+                        <li>"Windows Forensic Analysis DVD Toolkit"</li>
+                        <li>OWASP Security Guidelines</li>
+                        <li>NIST Cybersecurity Framework</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🎯 Future Learning</h3>
+                    <ul class="info-list" style="text-align: left;">
+                        <li>CISSP Certification Preparation</li>
+                        <li>AWS Security Specialization</li>
+                        <li>Advanced React & Node.js Development</li>
+                        <li>Machine Learning for Cybersecurity</li>
+                        <li>Cloud Security Architecture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.3rem; margin-bottom: 30px; color: #ccc; line-height: 1.8;">
+                    Ready to discuss opportunities in <span class="highlight">full-stack development</span>, 
+                    <span class="highlight">cybersecurity</span>, or <span class="highlight">network engineering</span>? 
+                    Let's build something amazing together.
+                </p>
+                
+                <div style="margin: 40px 0;">
+                    <a href="mailto:marishta.marlon@gmail.com?subject=Job Opportunity&body=Hi Marlon, I saw your portfolio and would like to discuss..." class="download-btn">📧 marishta.marlon@gmail.com</a>
+                    <a href="tel:+19172468180" class="download-btn">📞 +19172468180</a>
+                    <a href="https://github.com/iam-h1m" class="download-btn" target="_blank">💻 GitHub</a>
+                </div>
+                
+                <div class="info-grid" style="margin-top: 60px;">
+                    <div class="info-card">
+                        <h3>📍 Location</h3>
+                        <div style="color: #ccc;">
+                            <p>New York City, New York</p>
+                            <p>Available for remote, hybrid, or on-site work</p>
+                            <p>Open to relocation for the right opportunity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>💼 Availability</h3>
+                        <div style="color: #ccc;">
+                            <p>Immediate start available</p>
+                            <p>Full-time, contract, or consulting roles</p>
+                            <p>Flexible schedule (9 AM - 5 PM preferred)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🎯 Interests</h3>
+                        <div style="color: #ccc;">
+                            <p>Fintech & Financial Services</p>
+                            <p>Government & Public Sector Technology</p>
+                            <p>Startup environments & innovation</p>
+                            <p>Enterprise security solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 50px; padding: 30px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3);">
+                    <h3 style="color: #00d4ff; margin-bottom: 20px;">Ready to Make an Impact</h3>
+                    <p style="color: #ccc; line-height: 1.6;">
+                        Whether you need a developer to build secure, scalable applications, a 
+                        cybersecurity analyst to protect your infrastructure, or a network engineer to 
+                        design resilient architectures, I bring broad experience across multiple areas 
+                        and am now focused on developing deeper expertise in one of them. I offer a unique 
+                        combination of technical knowledge, real-world experience, and determination to 
+                        deliver results.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = Math.random() * 5 + 2 + 'px';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Matrix rain effect
+        function initMatrix() {
+            const canvas = document.getElementById('matrix');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>?/|\\~`';
+            const charArray = chars.split('');
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+            
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00d4ff';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = charArray[Math.floor(Math.random() * charArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 100);
+        }
+
+        // Download resume functionality
+        function downloadResume() {
+            alert('Multiple resume versions available:\n\n• Full Stack Developer Resume\n• Cybersecurity Analyst Resume\n• Network Engineer Resume\n• Government/Public Sector Resume\n\nContact me for specific version needed!');
+        }
+
+        // Smooth scrolling for internal navigation
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initMatrix();
+            
+            // Add some interactive effects
+            const cards = document.querySelectorAll('.skill-card, .project-card, .info-card, .education-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const canvas = document.getElementById('matrix');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const sections = ['home', 'about', 'skills', 'experience', 'projects', 'education', 'contact'];
+            const currentSection = document.querySelector('.section.active').id;
+            const currentIndex = sections.indexOf(currentSection);
+            
+            if (e.key === 'ArrowRight' && currentIndex < sections.length - 1) {
+                showSection(sections[currentIndex + 1]);
+                document.querySelector(`[onclick="showSection('${sections[currentIndex + 1]}')"]`).classList.add('active');
+            } else if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                showSection(sections[currentIndex - 1]);
+                document.querySelector(`[onclick="showSection('${sections[currentIndex - 1]}')"]`).classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
